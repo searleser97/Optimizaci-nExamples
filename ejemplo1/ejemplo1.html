@@ -1,0 +1,42 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=0.5, user-scalable=0" charset="UTF-8" />
+    <!--320-->
+    <link rel="stylesheet" type="text/css" href="../common_resources/nouislider.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="area data">
+            <label for="area"> Area: </label>
+            <input id="area" disabled="true" type="text" value="0.0" />
+        </div>
+        <div class="square">
+            <div class="rectangle"></div>
+            <div class="triangle"></div>
+            <div class="verticall">
+                <div class="minihorizontaltop"></div>
+                <div class="rheight">
+                    <input id="rheight" type="text" size="3" />
+                </div>
+                <div class="minihorizontalbottom"></div>
+            </div>
+            <div class="horizontall">
+                <div class="miniverticalleft"></div>
+                <div class="tlado">
+                    <input id="tlado" type="text" value="10" />
+                </div>
+                <div class="miniverticalright"></div>
+            </div>
+        </div>
+        <div id="slider" class="myrangeslider"></div>
+    </div>
+    <!--scripts-->
+    <script type="text/javascript" src="../common_resources/jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="../common_resources/nouislider.js"></script>
+    <script type="text/javascript" src="logic.js"></script>
+</body>
+
+</html>
