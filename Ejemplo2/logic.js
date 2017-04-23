@@ -2,17 +2,29 @@ function getLabelSize(tH, rH)
 {
    return 226-((200/tH)*rH);
 }
-function updateLabels(nvaH)
+function updateLabels(pastH)
 {
-    $("#svg_indRelH").attr("y1", nvaH);
-    $("#efectoAgua").attr("offset",(((nvaH)/200)*100)-15 + "%");
-    $("#nivelAgua").attr("offset",(((nvaH)/200)*100)-10 + "%");
-    console.log(((nvaH)/200)*100);
-    $("#svg_topH").attr("points", " 222.66 " + nvaH + " 202.33 " + nvaH);
-    if(nvaH > 180)
-        nvaH = 180;
-    $("#svg_txtRel").attr("transform", "matrix(0, 0.81, -1, 0, 225, "+ (nvaH+5) + ")");
+    $("#svg_indRelH").attr("y1", pastH);
+    $("#efectoAgua").attr("offset",(((pastH)/200)*100)-15 + "%");
+    $("#nivelAgua").attr("offset",(((pastH)/200)*100)-10 + "%");
+    $("#svg_topH").attr("points", " 222.66 " + pastH + " 202.33 " + pastH);
+    if(pastH > 180)
+        pastH = 180;
+    $("#svg_txtRel").attr("transform", "matrix(0, 0.81, -1, 0, 225, "+ (pastH+5) + ")");
+       
 }
+function transitionUpdate(pastH, nvaH) {
+    if (pastH==nvaH){ updateLabels(pastH); return; }
+
+    setTimeout(function () {
+        updateLabels(pastH);
+        if(nvaH>pastH )
+            transitionUpdate(++pastH, nvaH);
+        if(nvaH<pastH)
+            transitionUpdate(--pastH, nvaH);
+    }, 50);
+}
+
 $(document).ready(function(){
     $("#mySVG").width($(window).width());
     $("#mySVG").height($(window).height()*0.50);
@@ -23,6 +35,7 @@ $(document).ready(function(){
     });
     var hInPx = 200;
     var nvaH = getLabelSize($("#userTotalH").val(),($("#userRelH").val()));
+    var pastH = nvaH;
     console.log(nvaH);
     var rInPx = 100;
     var svg_totalR = document.getElementById("svg_totalR");
@@ -33,24 +46,26 @@ $(document).ready(function(){
     svg_totalH.innerHTML = $("#userTotalH").val();
     svg_totalR.innerHTML = $("#userTotalR").val();
     //Eventos para actualizar etiquetas svg
-    updateLabels(nvaH);
+    transitionUpdate(pastH,nvaH);
     $("#userTotalR").on("change", function(){
         svg_totalR.innerHTML = $("#userTotalR").val();
     });
     $("#userTotalH").on("change", function(){
         svg_totalH.innerHTML = $("#userTotalH").val();
+        pastH = nvaH;
         nvaH = getLabelSize($("#userTotalH").val(),($("#userRelH").val()));
-        updateLabels(nvaH);
+        transitionUpdate(pastH,nvaH);
     });
     $("#userRelH").on("change", function(){
+        pastH = nvaH;
         nvaH = getLabelSize($("#userTotalH").val(),($("#userRelH").val()));
         if(nvaH < 26 ) nvaH = 26;
         if(nvaH > 226 ) nvaH = 226;
-        svg_relH.innerHTML = $("#userRelH").val();
-        updateLabels(nvaH);
+        $("#userRelH").val() <= $("#userTotalH").val() ? svg_relH.innerHTML = $("#userRelH").val() : svg_relH.innerHTML = $("#userTotalH").val();
+        transitionUpdate(pastH,nvaH);
 
         console.log(nvaH);
-});
+    });
     /*
     var slider = document.getElementById('slider');
     //var userH = document.getElementById("userH").value;
