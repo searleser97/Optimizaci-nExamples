@@ -164,7 +164,7 @@
     font-size: 26px;
 }
 
-input[type='text'] {
+input {
     padding: 2px;
     margin: 2px;
     width: 4em;
