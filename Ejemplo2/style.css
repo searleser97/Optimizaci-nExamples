@@ -3,6 +3,7 @@ body{
 }
 svg{
     display: block;
+    height: 0px;
 }
 #Elipse
 {
@@ -27,6 +28,7 @@ svg{
     margin-left: auto;
     margin-right: auto;
     margin-top: 1em;
+    display: none;
 }
 #userIn div{
     margin: 5px;

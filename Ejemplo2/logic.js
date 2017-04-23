@@ -26,6 +26,13 @@ function transitionUpdate(pastH, nvaH) {
 }
 
 $(document).ready(function(){
+     var hInPx = 200;
+    var nvaH = getLabelSize($("#userTotalH").val(),($("#userRelH").val()));
+    var pastH = nvaH;
+    var rInPx = 100;
+    var svg_totalR = document.getElementById("svg_totalR");
+    var svg_totalH = document.getElementById("svg_totalH");
+    var svg_relH = document.getElementById("svg_relH");
     $("#mySVG").width($(window).width());
     $("#mySVG").height($(window).height()*0.50);
     $(window).resize(function(){
@@ -33,14 +40,7 @@ $(document).ready(function(){
         $("#mySVG").height($(window).height()*0.50);
         console.log($(window).width() + "x" + $(window).height());
     });
-    var hInPx = 200;
-    var nvaH = getLabelSize($("#userTotalH").val(),($("#userRelH").val()));
-    var pastH = nvaH;
-    console.log(nvaH);
-    var rInPx = 100;
-    var svg_totalR = document.getElementById("svg_totalR");
-    var svg_totalH = document.getElementById("svg_totalH");
-    var svg_relH = document.getElementById("svg_relH");
+    $("#userIn").css("display", "block");
     //Valores de las etiquetas svg
     svg_relH.innerHTML = $("#userRelH").val();
     svg_totalH.innerHTML = $("#userTotalH").val();
