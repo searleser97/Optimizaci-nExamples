@@ -1,18 +1,10 @@
-function randInt(min, max) {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-}
-
 var w = $('.container').width();
 var h = $('.container').height();
-// $('.container').html('width = ' + w);
-// $('.container').append(' height = ' + h);
 
 var r = w / h;
 r = r.toFixed(2);
-// $('.container').append(' r = ' + r);
 if (r > 0.8) {
     var aux = h * 0.8;
-    // $('.container').append(' actualWidth: ' + aux);
     $('.container').width(aux);
 }
 
@@ -86,7 +78,6 @@ var isPlus = 0;
 $('#area').keypress(function(e) {
     if (e.which == 13) {
         var areaVal = inputArea.value;
-        console.log(areaVal);
         var a = userTriangleS / userTriangleH;
         var b = -1 * userTriangleS;
         var c = areaVal;
