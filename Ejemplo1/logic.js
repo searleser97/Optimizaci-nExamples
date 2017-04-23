@@ -28,6 +28,8 @@ $('.triangle').css({
     'border-width': '0 ' + triangleS / 2 + 'px ' + triangleH + 'px ' + triangleS / 2 + 'px'
 });
 
+$('#theight').val(userTriangleH.toFixed(2));
+
 noUiSlider.create(slider, {
     start: 4.33,
     connect: [true, false],
@@ -63,7 +65,7 @@ inputUserTriangleS.addEventListener('change', function() {
 
     userTriangleS = inputUserTriangleS.value;
     userTriangleH = (userTriangleS / 2) * sqrt3;
-
+    $('#theight').val(userTriangleH.toFixed(2));
 
     slider.noUiSlider.updateOptions({
         range: {
@@ -75,8 +77,8 @@ inputUserTriangleS.addEventListener('change', function() {
 
 var isPlus = 0;
 
-$('#area').keypress(function(e) {
-    if (e.which == 13) {
+$('#area').keydown(function(e) {
+    if (e.which == 13 || e.which == 9) {
         var areaVal = inputArea.value;
         var a = userTriangleS / userTriangleH;
         var b = -1 * userTriangleS;
