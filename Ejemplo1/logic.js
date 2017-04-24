@@ -46,6 +46,8 @@ $(document).ready(function() {
         });
 
         $('#theight').val(userTriangleH.toFixed(2));
+
+        $('.myrangeslider').css({'margin-top' : triangleH / 3});
     }
 
     init();
