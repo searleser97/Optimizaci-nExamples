@@ -22,7 +22,7 @@ function transitionUpdate(pastH, nvaH) {
             transitionUpdate(++pastH, nvaH);
         if(nvaH<pastH)
             transitionUpdate(--pastH, nvaH);
-    }, 50);
+    }, 10);
 }
 
 $(document).ready(function(){
