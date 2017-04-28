@@ -3,17 +3,17 @@
     margin-right: auto;
     width: 100%;
     height: 100%;
-    background-color: #C67C5D;
     color: whitesmoke;
+    opacity: 0;
+    transition: opacity 1.5s;
 }
 
 .square {
     position: relative;
     margin-right: auto;
     margin-left: auto;
-    width: 80%;
-    height: 80%;
-    /*background-color: blue;*/
+    width: 70%;
+    height: 70%;
 }
 
 .triangle {
@@ -27,7 +27,6 @@
     background-color: transparent;
     border-style: solid;
     border-color: transparent transparent #1E4A5D transparent;
-    border-width: 0 125 216.5 125;
 }
 
 .rectangle {
@@ -46,16 +45,16 @@
 }
 
 .myrangeslider {
-    width: 90%;
+    width: 80%;
     height: 100px;
     /*background-color: red;*/
     margin-right: auto;
     margin-left: auto;
-    margin-top: 100px;
+    margin-top: 20%;
 }
 
 .noUi-horizontal .noUi-handle {
-    width: 80px;
+    width: 50px;
     height: 120px;
     left: -17px;
     top: -10px;
@@ -65,7 +64,7 @@
     position: absolute;
     height: 35px;
     top: 45%;
-    left: -51px;
+    left: -46px;
     z-index: 10;
     background-color: transparent;
 }
@@ -132,7 +131,7 @@
     height: 5px;
     background-color: black;
     position: absolute;
-    top: 106%;
+    top: 110%;
 }
 
 .miniverticalright {
@@ -165,6 +164,7 @@
     left: 0;
     right: 0;
     top: -16px;
+    background-color: transparent;
 }
 
 #tlado {
