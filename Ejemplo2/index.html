@@ -1,84 +1,132 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <title></title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" type="text/css" href="../common_resources/nouislider.css" />
-    
 </head>
+
 <body>
     <svg id="mySVG" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 249.83 226.91">
-    <defs>
-        <style>
-            .cls-1,.cls-2{stroke:#000;stroke-miterlimit:10}.cls-1{fill:url(#Agua)}.cls-2{fill:none}.cls-3{font-size:12px;font-family: Arial, MyriadPro-Regular,Myriad Pro}.cls-4{letter-spacing:.01em}.cls-5{letter-spacing:0}.cls-6{letter-spacing:-.01em}.cls-7{letter-spacing:0}.cls-8{letter-spacing:-.01em}
-        </style>
-        <linearGradient id="Agua" x1="100.54" x2="100.54" y1="29.09" y2="225.45" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stop-color="#2c3e50" stop-opacity="1"/>
-            <stop id="efectoAgua" stop-color="#2c3e50"/>
-            <stop id="nivelAgua" stop-color="#3498db" stop-opacity="1"/>
-        </linearGradient>
-    </defs>
-    <title>
-        conoAgua
-    </title>
-    <g id="Capa_2" data-name="Capa 2">
-        <g id="Capa_1-2" data-name="Capa 1">
-            <path id="Triangulo" d="M1.61 29.23l98.87 196.22 99-196.36C174.36 59.41 16 54.41 1.61 29.23z" class="cls-1"/>
-            <path id="Elipse" d="M200.5 25.5c0 13.81-44.83 25.08-100 25-54.35-.08-100-11.19-100-25s44.77-25 100-25 100 11.19 100 25z" class="cls-2"/>
-            <g id="Acotaciones">
-                <g id="acotRadio">
-                    <polyline points="100.83 15.33 100.5 25.5 100.83 35.67" class="cls-2"/>
-                    <polyline points="201.33 15.33 201 25.5 201.33 35.67" class="cls-2"/>
-                    <line id="svg_indTotalR" x1="100.5" x2="201.17" y1="25.5" y2="25.5" class="cls-2"/>
-                    <text class="cls-3" transform="translate(110.21 21.67)">
-                        <tspan class="cls-4">R</tspan><tspan x="6.6" y="0">adio:</tspan><tspan id="svg_totalR" x="33" y="0"></tspan>
-                    </text>
-                </g>
-                <g id="acotAltura">
-                    <polyline points="245.84 25.7 235.68 25.08 225.51 25.8" class="cls-2"/>
-                    <polyline points="246.81 226.07 236.63 225.45 226.47 226.16" class="cls-2"/>
-                    <line id="svg_indTotalH" x1="235.68" x2="236.64" y1="25.08" y2="225.78" class="cls-2" data-name="radioMedida"/>
-                    <text class="cls-3" transform="matrix(0.01, 1.15, -1, 0, 239.6, 42.61)">
-                        <tspan class="cls-5">A</tspan><tspan x="7.31" y="0">ltu</tspan><tspan x="20.72" y="0" class="cls-6">r</tspan><tspan x="24.59" y="0">a:</tspan><tspan id="svg_totalH" x="35" y="0"></tspan>
-                    </text>
-                    
-                </g>
-                <g id="acotAlturaUser">
-                    <text id="svg_txtRel" class="cls-3" transform="matrix(0, 0.81, -1, 0, 225, 159.2)">
-                        <tspan class="cls-7">A</tspan><tspan x="7.31" y="0">ltu</tspan><tspan x="20.72" y="0" class="cls-8">r</tspan><tspan x="24.59" y="0">a:</tspan><tspan id="svg_relH" x="35" y="0"></tspan>
-                    </text>
-                    <polyline id="svg_topH" points="222.66 153 202.33 153" class="cls-2"/>
-                    <polyline points="223.02 226.31 212.85 226.12 202.69 226.41" class="cls-2"/>
-                    <line id="svg_indRelH" x1="212.5" x2="212.85" y1="152.8" y2="226.24" class="cls-2" data-name="radioMedida"/>
+        <defs>
+            <style>
+            .cls-1,
+            .cls-2 {
+                stroke: #000;
+                stroke-miterlimit: 10
+            }
+            
+            .cls-1 {
+                fill: url(#Agua)
+            }
+            
+            .cls-2 {
+                fill: none
+            }
+            
+            .cls-3 {
+                font-size: 12px;
+                font-family: Arial, MyriadPro-Regular, Myriad Pro
+            }
+            
+            .cls-4 {
+                letter-spacing: .01em
+            }
+            
+            .cls-5 {
+                letter-spacing: 0
+            }
+            
+            .cls-6 {
+                letter-spacing: -.01em
+            }
+            
+            .cls-7 {
+                letter-spacing: 0
+            }
+            
+            .cls-8 {
+                letter-spacing: -.01em
+            }
+            </style>
+            <linearGradient id="Agua" x1="100.54" x2="100.54" y1="29.09" y2="225.45" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#2c3e50" stop-opacity="1" />
+                <stop id="efectoAgua" stop-color="#2c3e50" />
+                <stop id="nivelAgua" stop-color="#3498db" stop-opacity="1" />
+            </linearGradient>
+        </defs>
+        <title>
+            conoAgua
+        </title>
+        <g id="Capa_2" data-name="Capa 2">
+            <g id="Capa_1-2" data-name="Capa 1">
+                <path id="Triangulo" d="M1.61 29.23l98.87 196.22 99-196.36C174.36 59.41 16 54.41 1.61 29.23z" class="cls-1" />
+                <path id="Elipse" d="M200.5 25.5c0 13.81-44.83 25.08-100 25-54.35-.08-100-11.19-100-25s44.77-25 100-25 100 11.19 100 25z" class="cls-2" />
+                <g id="Acotaciones">
+                    <g id="acotRadio">
+                        <polyline points="100.83 15.33 100.5 25.5 100.83 35.67" class="cls-2" />
+                        <polyline points="201.33 15.33 201 25.5 201.33 35.67" class="cls-2" />
+                        <line id="svg_indTotalR" x1="100.5" x2="201.17" y1="25.5" y2="25.5" class="cls-2" />
+                        <text class="cls-3" transform="translate(110.21 21.67)">
+                            <tspan class="cls-4">R</tspan>
+                            <tspan x="6.6" y="0">adio:</tspan>
+                            <tspan id="svg_totalR" x="33" y="0"></tspan>
+                        </text>
+                    </g>
+                    <g id="acotAltura">
+                        <polyline points="245.84 25.7 235.68 25.08 225.51 25.8" class="cls-2" />
+                        <polyline points="246.81 226.07 236.63 225.45 226.47 226.16" class="cls-2" />
+                        <line id="svg_indTotalH" x1="235.68" x2="236.64" y1="25.08" y2="225.78" class="cls-2" data-name="radioMedida" />
+                        <text class="cls-3" transform="matrix(0.01, 1.15, -1, 0, 239.6, 42.61)">
+                            <tspan class="cls-5">A</tspan>
+                            <tspan x="7.31" y="0">ltu</tspan>
+                            <tspan x="20.72" y="0" class="cls-6">r</tspan>
+                            <tspan x="24.59" y="0">a:</tspan>
+                            <tspan id="svg_totalH" x="35" y="0"></tspan>
+                        </text>
+                    </g>
+                    <g id="acotAlturaUser">
+                        <text id="svg_txtRel" class="cls-3" transform="matrix(0, 0.81, -1, 0, 225, 159.2)">
+                            <tspan class="cls-7">A</tspan>
+                            <tspan x="7.31" y="0">ltu</tspan>
+                            <tspan x="20.72" y="0" class="cls-8">r</tspan>
+                            <tspan x="24.59" y="0">a:</tspan>
+                            <tspan id="svg_relH" x="35" y="0"></tspan>
+                        </text>
+                        <polyline id="svg_topH" points="222.66 153 202.33 153" class="cls-2" />
+                        <polyline points="223.02 226.31 212.85 226.12 202.69 226.41" class="cls-2" />
+                        <line id="svg_indRelH" x1="212.5" x2="212.85" y1="152.8" y2="226.24" class="cls-2" data-name="radioMedida" />
+                    </g>
                 </g>
             </g>
         </g>
-    </g>
-</svg>
-<div id="userIn">
-    <center>
-    <div>
-        <label for="userTotalH">Altura total del deposito: </label>
-        <input type="number" id="userTotalH" value="50"/>
+    </svg>
+    <div id="userIn">
+        <center>
+            <div>
+                <label for="userTotalH">Altura total del deposito: </label>
+                <input type="number" id="userTotalH" value="50" />
+            </div>
+            <div>
+                <label for="userTotalR">Radio total del deposito: </label>
+                <input type="number" id="userTotalR" value="10" />
+            </div>
+            <div>
+                <label for="userRelH">Altura del agua: </label>
+                <input type="number" id="userRelH" value="25" />
+            </div>
+            <div>
+                <input id="slider" type="range" min="0" max="50" step="1" />
+            </div>
+        </center>
     </div>
-    <div>
-        <label for="userTotalR">Radio total del deposito: </label>
-        <input type="number" id="userTotalR" value="10"/>
-    </div>
-    <div>
-        <label for="userRelH">Altura del agua: </label>
-        <input type="number" id="userRelH" value="25"/>
-    </div>
-    <div>
-        <input id="slider" type="range" min="0" max="50" step="1"/>
-    </div>
-    </center>
-</div>
 </body>
-    <!--scripts-->
-    <script type="text/javascript" src="../common_resources/jquery-3.2.1.js"></script>
-    <script type="text/javascript" src="../common_resources/nouislider.js"></script>
-    <script type="text/javascript" src="logic.js"></script>
+<!--scripts-->
+<script type="text/javascript" src="../common_resources/jquery-3.2.1.js"></script>
+<script type="text/javascript" src="../common_resources/nouislider.js"></script>
+<script type="text/javascript" src="logic.js"></script>
+
 </html>
