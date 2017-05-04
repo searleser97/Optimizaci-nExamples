@@ -5,46 +5,17 @@ svg{
     display: block;
     height: 0px;
 }
-#Elipse
+input[type="text"]
 {
-    fill: #34495e;
-    opacity: 1;
+    width: 4em;
+    text-align: center;
 }
-#acotRadio *
-{
-    fill: whitesmoke;
-}
-#acotRadio polyline{
-    stroke: whitesmoke;
-}
-#acotRadio line{
-    stroke: whitesmoke;
-}
-#userIn{
-    width: 100%;
-    height: auto;
-    display: block;
-    font-size: 16px;
+div table{
+    width: 50%;
     margin-left: auto;
-    margin-right: auto;
-    margin-top: 1em;
-    display: none;
+    margin-right: auto; 
 }
-#userIn div{
-    margin: 5px;
-    display: inline-block;
-}
-#userIn input[type="number"]
-{
-    width: 64px;
-    border-radius: 5px;
-    border: 1px solid #34495e;
-}
-.myrangeslider {
-    width: 90%;
-    height: 100px;
-    /*background-color: red;*/
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 100px;
+*{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;   
 }
