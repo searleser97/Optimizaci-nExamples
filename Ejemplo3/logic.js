@@ -40,6 +40,7 @@ $(document).ready(function() {
         userTriangleH = (userTriangleS / 2) * sqrt3;
 
         $('.square').height(triangleH);
+        $('.square').width(triangleH);
 
         $('.triangle').css({
             'border-width': '0 ' + triangleS / 2 + 'px ' + triangleH + 'px ' + triangleS / 2 + 'px'
@@ -47,7 +48,7 @@ $(document).ready(function() {
 
         $('#theight').val(userTriangleH.toFixed(2));
 
-        $('.myrangeslider').css({'margin-top' : triangleH / 3});
+        $('.myrangeslider').css({ 'margin-top': triangleH / 3 });
     }
 
     init();
@@ -74,6 +75,8 @@ $(document).ready(function() {
     });
 
     inputUserTriangleS.addEventListener('change', function() {
+        if (this.value === '0')
+            inputUserTriangleS.value = 0.01;
 
         userTriangleS = inputUserTriangleS.value;
         userTriangleH = (userTriangleS / 2) * sqrt3;
@@ -106,6 +109,10 @@ $(document).ready(function() {
             slider.noUiSlider.set(rH);
             return false;
         }
+    });
+
+    $('#tlado, #theight, #rheight, #area').keyup(function(event) {
+        this.value = this.value.replace(/[^0-9\.]/g, '');
     });
     $(window).resize(function() { init(); });
     $('.container').css({ 'opacity': '1' });

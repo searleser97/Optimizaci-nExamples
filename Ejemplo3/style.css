@@ -12,11 +12,12 @@
     position: relative;
     margin-right: auto;
     margin-left: auto;
+    background-color: red;
     width: 70%;
     height: 70%;
 }
 
-.triangle {
+/* .triangle {
     position: absolute;
     height: 0;
     width: 0;
@@ -27,18 +28,36 @@
     background-color: transparent;
     border-style: solid;
     border-color: transparent transparent #1E4A5D transparent;
+} */
+
+.circle {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    right: 0;
+    background-color: blue;
+    border-radius: 50%;
+    /*border-style: solid;*/
+
 }
 
 .rectangle {
     position: absolute;
     margin-left: auto;
     margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
     left: 0;
     right: 0;
     bottom: 0;
+    top: 0;
     min-height: 2px;
     min-width: 1px;
     background-color: #81CFE0;
+    /*background-color: transparent;*/
     border: 1px solid whitesmoke;
     transition: width 0.5s, height 0.5s;
     z-index: 1;
@@ -63,7 +82,10 @@
 .rheight {
     position: absolute;
     height: 35px;
-    top: 45%;
+    top: 0;
+    bottom: 0;
+    margin-top: auto;
+    margin-bottom: auto;
     left: -46px;
     z-index: 10;
     background-color: transparent;
@@ -95,7 +117,10 @@
     position: absolute;
     left: 102%;
     transition: height 0.5s;
+    margin-top: auto;
+    margin-bottom: auto;
     bottom: 0;
+    top: 0;
 }
 
 .verticall2 {

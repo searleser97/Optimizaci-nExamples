@@ -63,7 +63,10 @@
 .rheight {
     position: absolute;
     height: 35px;
-    top: 45%;
+    margin-top: auto;
+    margin-bottom: auto;
+    top: 0;
+    bottom: 0;
     left: -46px;
     z-index: 10;
     background-color: transparent;
@@ -71,7 +74,6 @@
 
 #rheight {
     height: 100%;
-    vertical-align: center;
     background-color: whitesmoke;
     text-align: center;
     /*border: none;*/
@@ -163,13 +165,15 @@
     margin-right: auto;
     left: 0;
     right: 0;
-    top: -16px;
+    top: 0;
+    bottom: 0;
+    margin-top: auto;
+    margin-bottom: auto;
     background-color: transparent;
 }
 
 #tlado {
     height: 100%;
-    vertical-align: center;
     background-color: whitesmoke;
     text-align: center;
     /*border: none;*/
