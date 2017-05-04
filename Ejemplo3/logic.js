@@ -16,7 +16,7 @@ $(document).ready(function() {
         step: 0.01,
         range: {
             'min': 0,
-            'max': 8.66
+            'max': 10
         }
     });
 
@@ -33,20 +33,16 @@ $(document).ready(function() {
         $('.container').width(w - 23);
 
         triangleS = $('.square').width();
-        triangleH = ((triangleS / 2) * sqrt3).toFixed(2);
+        triangleH = triangleS;
 
 
         userTriangleS = inputUserTriangleS.value;
-        userTriangleH = (userTriangleS / 2) * sqrt3;
+        userTriangleH = inputUserTriangleS.value;
 
         $('.square').height(triangleH);
         $('.square').width(triangleH);
 
-        $('.triangle').css({
-            'border-width': '0 ' + triangleS / 2 + 'px ' + triangleH + 'px ' + triangleS / 2 + 'px'
-        });
-
-        $('#theight').val(userTriangleH.toFixed(2));
+        $('#theight').val(userTriangleH);
 
         $('.myrangeslider').css({ 'margin-top': triangleH / 3 });
     }
@@ -56,7 +52,8 @@ $(document).ready(function() {
     slider.noUiSlider.on('update', function(values, handle) {
 
         var rectangleH = values[handle];
-        var rectangleW = ((userTriangleS * (userTriangleH - rectangleH)) / userTriangleH);
+        // var rectangleW = ((userTriangleS * (userTriangleH - rectangleH)) / userTriangleH);
+        var rectangleW = Math.sqrt(Math.pow(userTriangleS, 2) - Math.pow(rectangleH, 2));
         var rectangleHpercentage = rectangleH / userTriangleH * 100;
 
         $('.verticall').css({ 'height': rectangleHpercentage + '%' });
@@ -79,8 +76,8 @@ $(document).ready(function() {
             inputUserTriangleS.value = 0.01;
 
         userTriangleS = inputUserTriangleS.value;
-        userTriangleH = (userTriangleS / 2) * sqrt3;
-        $('#theight').val(userTriangleH.toFixed(2));
+        userTriangleH = userTriangleS;
+        $('#theight').val(userTriangleH);
 
         slider.noUiSlider.updateOptions({
             range: {
@@ -105,14 +102,14 @@ $(document).ready(function() {
                 aux = 0;
                 isPlus = 1;
             }
-            var rH = (-1 * b + PlusOrMinus[aux] * (Math.sqrt(Math.pow(b, 2) - 4 * a * c))) / (2 * a);
+            // var rH = Math.sqrt(pow(userTriangleS, 2) - Math.pow((2 * areaVal) / , 2))
             slider.noUiSlider.set(rH);
             return false;
         }
     });
 
     $('#tlado, #theight, #rheight, #area').keyup(function(event) {
-        this.value = this.value.replace(/[^0-9\.]/g, '');
+        this.value = this.value.replace(/[^0-9]/g, '');
     });
     $(window).resize(function() { init(); });
     $('.container').css({ 'opacity': '1' });
