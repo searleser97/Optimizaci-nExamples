@@ -1,9 +1,51 @@
+function f(x, coefs) {
+    var ans = 0;
+    var n = coefs.length - 1;
+    coefs.forEach(function (a) {
+        ans += a * Math.pow(x, n);
+        n -= 1;
+    });
+
+    return ans;
+}
+
+function df(x, coefs) {
+    var ans = 0;
+    coefs = coefs.slice(0, -1);
+    console.log(coefs);
+    var n = coefs.length;
+    coefs.forEach(function (a) {
+        ans += a * Math.pow(x, n);
+        n -= 1;
+    });
+
+    return ans;
+}
+
+function dx(x, coefs) {
+    return Math.abs(0 - f(x, coefs));
+}
+
+function newtons_method(x0, e, coefs) {
+    var delta = dx(x0, coefs);
+    var count = 0;
+    while (delta > e) {
+        x0 = x0 - f(x0, coefs) / df(x0, coefs);
+        delta = dx(x0, coefs);
+        count += 1;
+    }
+    return x0;
+
+}
+// [1, 0, -d^2, 0, area^2];
+// alert(newtons_method(1, 1e-5, [1,0,-100,0,1600]));
+
+
 $(document).ready(function() {
     var inputUserTriangleS = document.getElementById('tlado');
     var inputRectangleH = document.getElementById('rheight');
     var slider = document.getElementById('slider');
     var inputArea = document.getElementById('area');
-    var sqrt3 = Math.sqrt(3);
     var isPlus = 0;
     var triangleS;
     var triangleH;
@@ -63,6 +105,8 @@ $(document).ready(function() {
             'height': rectangleHpercentage + '%'
         });
 
+        alert(rectangleW);
+
         inputArea.value = (rectangleH * rectangleW).toFixed(2);
         inputRectangleH.value = values[handle];
     });
@@ -102,6 +146,8 @@ $(document).ready(function() {
                 aux = 0;
                 isPlus = 1;
             }
+            // var rH = newtons_method(1, 1e-5, [1,0,-100,0,1600]);
+            var rH = newtons_method(1, 1e-5, [1,0,-1 * Math.pow(userTriangleS, 2),0,Math.pow(areaVal, 2)]);
             // var rH = Math.sqrt(pow(userTriangleS, 2) - Math.pow((2 * areaVal) / , 2))
             slider.noUiSlider.set(rH);
             return false;
