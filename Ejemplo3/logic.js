@@ -12,10 +12,9 @@ function f(x, coefs) {
 function df(x, coefs) {
     var ans = 0;
     coefs = coefs.slice(0, -1);
-    console.log(coefs);
     var n = coefs.length;
     coefs.forEach(function (a) {
-        ans += a * Math.pow(x, n);
+        ans += a * n * Math.pow(x, n - 1);
         n -= 1;
     });
 
@@ -38,7 +37,7 @@ function newtons_method(x0, e, coefs) {
 
 }
 // [1, 0, -d^2, 0, area^2];
-// alert(newtons_method(1, 1e-5, [1,0,-100,0,1600]));
+// alert(newtons_method(0.5, 1e-5, [1,0,-100,0,2500]));
 
 
 $(document).ready(function() {
@@ -97,7 +96,7 @@ $(document).ready(function() {
         // var rectangleW = ((userTriangleS * (userTriangleH - rectangleH)) / userTriangleH);
         var rectangleW = Math.sqrt(Math.pow(userTriangleS, 2) - Math.pow(rectangleH, 2));
         var rectangleHpercentage = rectangleH / userTriangleH * 100;
-
+        console.log(rectangleW);
         $('.verticall').css({ 'height': rectangleHpercentage + '%' });
 
         $('.rectangle').css({
@@ -105,7 +104,6 @@ $(document).ready(function() {
             'height': rectangleHpercentage + '%'
         });
 
-        alert(rectangleW);
 
         inputArea.value = (rectangleH * rectangleW).toFixed(2);
         inputRectangleH.value = values[handle];
@@ -147,7 +145,7 @@ $(document).ready(function() {
                 isPlus = 1;
             }
             // var rH = newtons_method(1, 1e-5, [1,0,-100,0,1600]);
-            var rH = newtons_method(1, 1e-5, [1,0,-1 * Math.pow(userTriangleS, 2),0,Math.pow(areaVal, 2)]);
+            var rH = Math.abs(newtons_method(1, 1e-5, [1,0,-1 * Math.pow(userTriangleS, 2),0,Math.pow(areaVal, 2)]));
             // var rH = Math.sqrt(pow(userTriangleS, 2) - Math.pow((2 * areaVal) / , 2))
             slider.noUiSlider.set(rH);
             return false;
@@ -155,7 +153,7 @@ $(document).ready(function() {
     });
 
     $('#tlado, #theight, #rheight, #area').keyup(function(event) {
-        this.value = this.value.replace(/[^0-9]/g, '');
+        this.value = this.value.replace(/[^(\d\.)]/g, '');
     });
     $(window).resize(function() { init(); });
     $('.container').css({ 'opacity': '1' });

@@ -39,6 +39,7 @@ if __name__ == '__main__':
     print(coefs)
 
     # x0s = range(complex(-0.5, 1), complex(1, 0))
-    x0s = [complex(-0.5, 1)]
+    # x0s = [complex(-0.5, 1)]
+    x0s = [0.5]
     for x0 in x0s:
         newtons_method(f, df, x0, 1e-5, coefs)
