@@ -36,8 +36,7 @@ function newtons_method(x0, e, coefs) {
     return x0;
 
 }
-// [1, 0, -d^2, 0, area^2];
-// alert(newtons_method(0.5, 1e-5, [1,0,-100,0,2500]));
+// [1, 0, -1 * CircleDiameter^2, 0, area^2];
 
 $(document).ready(function() {
     var inputUserCircleD = document.getElementById('tlado');
@@ -45,13 +44,11 @@ $(document).ready(function() {
     var slider = document.getElementById('slider');
     var inputArea = document.getElementById('area');
     var circleD;
-    var triangleH;
-    var userCircleD;
     var userCircleD;
     var maxArea;
 
     noUiSlider.create(slider, {
-        start: 4.33,
+        start: 7.07,
         connect: [true, false],
         step: 0.01,
         range: {
@@ -77,16 +74,15 @@ $(document).ready(function() {
         $('.square').width(aux);
 
         circleD = $('.square').width();
-        triangleH = circleD;
 
 
         userCircleD = inputUserCircleD.value;
 
-        maxArea = Math.pow(inputUserCircleD.value, 2) / 2;
+        maxArea = Math.pow(userCircleD, 2) / 2;
 
         $('#theight').val(userCircleD);
 
-        $('.myrangeslider').css({ 'margin-top': triangleH / 3 });
+        $('.myrangeslider').css({ 'margin-top': circleD / 3 });
     }
 
     init();
@@ -94,7 +90,6 @@ $(document).ready(function() {
     slider.noUiSlider.on('update', function(values, handle) {
 
         var rectangleH = values[handle];
-        // var rectangleW = ((userCircleD * (userCircleD - rectangleH)) / userCircleD);
         var rectangleW = Math.sqrt(Math.pow(userCircleD, 2) - Math.pow(rectangleH, 2));
         var rectangleHpercentage = rectangleH / userCircleD * 100;
         $('.verticall').css({ 'height': rectangleHpercentage + '%' });
@@ -116,9 +111,9 @@ $(document).ready(function() {
     inputUserCircleD.addEventListener('change', function() {
         if (this.value === '0')
             inputUserCircleD.value = 0.01;
-
-        maxArea = Math.pow(inputUserCircleD.value, 2) / 2;
         userCircleD = inputUserCircleD.value;
+        maxArea = Math.pow(userCircleD, 2) / 2;
+        
         $('#theight').val(userCircleD);
 
         slider.noUiSlider.updateOptions({
@@ -143,7 +138,7 @@ $(document).ready(function() {
     });
 
     $('#tlado, #theight, #rheight, #area').keyup(function(event) {
-        if (this.value.trim().match(/[a-zA-Z-+]/)) {
+        if (!this.value.trim().match(/^\d+([,.]\d+)?/)) {
             $(this).val('');
         }
     });
