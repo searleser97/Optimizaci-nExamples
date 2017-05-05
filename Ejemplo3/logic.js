@@ -39,17 +39,16 @@ function newtons_method(x0, e, coefs) {
 // [1, 0, -d^2, 0, area^2];
 // alert(newtons_method(0.5, 1e-5, [1,0,-100,0,2500]));
 
-
 $(document).ready(function() {
-    var inputUserTriangleS = document.getElementById('tlado');
+    var inputUserCircleD = document.getElementById('tlado');
     var inputRectangleH = document.getElementById('rheight');
     var slider = document.getElementById('slider');
     var inputArea = document.getElementById('area');
-    var isPlus = 0;
-    var triangleS;
+    var circleD;
     var triangleH;
-    var userTriangleS;
-    var userTriangleH;
+    var userCircleD;
+    var userCircleD;
+    var maxArea;
 
     noUiSlider.create(slider, {
         start: 4.33,
@@ -65,6 +64,7 @@ $(document).ready(function() {
 
         var w = $(window).width();
         var h = $(window).height();
+        console.log(w + " " + h);
 
         var r = w / h;
         r = r.toFixed(2);
@@ -72,18 +72,19 @@ $(document).ready(function() {
             w = h * 0.8;
         }
         $('.container').width(w - 23);
+        var aux = $('.container').width() * 0.7;
+        $('.square').height(aux);
+        $('.square').width(aux);
 
-        triangleS = $('.square').width();
-        triangleH = triangleS;
+        circleD = $('.square').width();
+        triangleH = circleD;
 
 
-        userTriangleS = inputUserTriangleS.value;
-        userTriangleH = inputUserTriangleS.value;
+        userCircleD = inputUserCircleD.value;
 
-        $('.square').height(triangleH);
-        $('.square').width(triangleH);
+        maxArea = Math.pow(inputUserCircleD.value, 2) / 2;
 
-        $('#theight').val(userTriangleH);
+        $('#theight').val(userCircleD);
 
         $('.myrangeslider').css({ 'margin-top': triangleH / 3 });
     }
@@ -93,14 +94,13 @@ $(document).ready(function() {
     slider.noUiSlider.on('update', function(values, handle) {
 
         var rectangleH = values[handle];
-        // var rectangleW = ((userTriangleS * (userTriangleH - rectangleH)) / userTriangleH);
-        var rectangleW = Math.sqrt(Math.pow(userTriangleS, 2) - Math.pow(rectangleH, 2));
-        var rectangleHpercentage = rectangleH / userTriangleH * 100;
-        console.log(rectangleW);
+        // var rectangleW = ((userCircleD * (userCircleD - rectangleH)) / userCircleD);
+        var rectangleW = Math.sqrt(Math.pow(userCircleD, 2) - Math.pow(rectangleH, 2));
+        var rectangleHpercentage = rectangleH / userCircleD * 100;
         $('.verticall').css({ 'height': rectangleHpercentage + '%' });
 
         $('.rectangle').css({
-            'width': rectangleW / userTriangleS * 100 + '%',
+            'width': rectangleW / userCircleD * 100 + '%',
             'height': rectangleHpercentage + '%'
         });
 
@@ -113,18 +113,18 @@ $(document).ready(function() {
         slider.noUiSlider.set(this.value);
     });
 
-    inputUserTriangleS.addEventListener('change', function() {
+    inputUserCircleD.addEventListener('change', function() {
         if (this.value === '0')
-            inputUserTriangleS.value = 0.01;
+            inputUserCircleD.value = 0.01;
 
-        userTriangleS = inputUserTriangleS.value;
-        userTriangleH = userTriangleS;
-        $('#theight').val(userTriangleH);
+        maxArea = Math.pow(inputUserCircleD.value, 2) / 2;
+        userCircleD = inputUserCircleD.value;
+        $('#theight').val(userCircleD);
 
         slider.noUiSlider.updateOptions({
             range: {
                 'min': 0,
-                'max': userTriangleH
+                'max': parseInt(userCircleD)
             }
         });
     });
@@ -132,28 +132,20 @@ $(document).ready(function() {
     $('#area').keydown(function(e) {
         if (e.which == 13 || e.which == 9) {
             var areaVal = inputArea.value;
-            var a = userTriangleS / userTriangleH;
-            var b = -1 * userTriangleS;
-            var c = areaVal;
-            var PlusOrMinus = [-1, 1];
-            var aux;
-            if (isPlus) {
-                aux = 1;
-                isPlus = 0;
-            } else {
-                aux = 0;
-                isPlus = 1;
+            if (areaVal > maxArea) {
+                inputArea.value = maxArea;
+                areaVal = maxArea;
             }
-            // var rH = newtons_method(1, 1e-5, [1,0,-100,0,1600]);
-            var rH = Math.abs(newtons_method(1, 1e-5, [1,0,-1 * Math.pow(userTriangleS, 2),0,Math.pow(areaVal, 2)]));
-            // var rH = Math.sqrt(pow(userTriangleS, 2) - Math.pow((2 * areaVal) / , 2))
+            var rH = Math.abs(newtons_method(1, 1e-5, [1,0,-1 * Math.pow(userCircleD, 2),0,Math.pow(areaVal, 2)]));
             slider.noUiSlider.set(rH);
             return false;
         }
     });
 
     $('#tlado, #theight, #rheight, #area').keyup(function(event) {
-        this.value = this.value.replace(/[^(\d\.)]/g, '');
+        if (this.value.trim().match(/[a-zA-Z-+]/)) {
+            $(this).val('');
+        }
     });
     $(window).resize(function() { init(); });
     $('.container').css({ 'opacity': '1' });
