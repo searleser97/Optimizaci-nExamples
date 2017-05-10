@@ -25,16 +25,18 @@ function onChangePer(perimetro, x)
     onChangeX(perimetro, x);
     onChangeArea(x, getY(perimetro, x));
 }
-function responsive(svg)
+function responsive(JQueryObject, widthPer, heightPer)
 {
-    svg.width($(window).width() * 0.95);
-    svg.height($(window).height()*0.50);
+    JQueryObject.width($(window).width()*(widthPer/100));
+    JQueryObject.height($(window).height()*(heightPer/100));
 }
 $(document).ready(function(){
     //Resize
-    responsive($("#mySVG"));
+    responsive($("#mySVG"), 90, 50);
+    //responsive($("#controls"), 90, 50);
     $(window).resize(function(){
-        responsive($("#mySVG"));
+        responsive($("#mySVG"), 90, 50);
+      //  responsive($("#controls"), 90, 50);
         console.log($(window).width() + "x" + $(window).height());
     });
     //Vars

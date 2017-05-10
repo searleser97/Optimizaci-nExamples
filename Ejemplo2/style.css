@@ -24,6 +24,41 @@ div table{
     text-align: center;   
 }
 
+.info
+{
+  border-radius: 10px;
+  box-shadow: none;
+  border: 1px solid #141414;
+  vertical-align: middle;
+  margin-left: 10px;
+  cursor: help;
+  transition: all 0.8s;
+  text-align: center;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+.info:hover{
+  background-color: #34495e;
+  color: whitesmoke;
+  border: 1px solid white;
+}
+ .info:focus{
+  background-color: #34495e;
+  color: whitesmoke;
+  border: 1px solid white;
+}
+ .info:active
+{
+  background-color: #34495e;
+  color: whitesmoke;
+  border: 1px solid white;
+}
+#controls
+{
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+}
 
 input[type=range].slider {
   -webkit-appearance: none;
