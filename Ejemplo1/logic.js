@@ -30,6 +30,7 @@ $(document).ready(function() {
         if (r > 0.8) {
             w = h * 0.8;
         }
+        
         $('.container').width(w - 23);
 
         triangleS = $('.square').width();
@@ -111,8 +112,11 @@ $(document).ready(function() {
     });
 
     $('#tlado, #theight, #rheight, #area').keyup(function(event) {
-        this.value = this.value.replace(/[^0-9\.]/g, '');
+        if (!this.value.trim().match(/^\d+([,.]\d+)?/)) {
+            $(this).val('');
+        }
     });
+
     $(window).resize(function() { init(); });
     $('.container').css({ 'opacity': '1' });
 });

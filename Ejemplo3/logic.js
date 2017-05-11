@@ -43,6 +43,7 @@ $(document).ready(function() {
     var inputRectangleH = document.getElementById('rheight');
     var slider = document.getElementById('slider');
     var inputArea = document.getElementById('area');
+    // var theight = document.getElementById('theight');
     var circleD;
     var userCircleD;
     var maxArea;
@@ -61,7 +62,6 @@ $(document).ready(function() {
 
         var w = $(window).width();
         var h = $(window).height();
-        console.log(w + " " + h);
 
         var r = w / h;
         r = r.toFixed(2);
@@ -111,15 +111,14 @@ $(document).ready(function() {
     inputUserCircleD.addEventListener('change', function() {
         if (this.value === '0')
             inputUserCircleD.value = 0.01;
+
         userCircleD = inputUserCircleD.value;
         maxArea = Math.pow(userCircleD, 2) / 2;
-        
-        $('#theight').val(userCircleD);
 
         slider.noUiSlider.updateOptions({
             range: {
                 'min': 0,
-                'max': parseInt(userCircleD)
+                'max': parseFloat(userCircleD)
             }
         });
     });
