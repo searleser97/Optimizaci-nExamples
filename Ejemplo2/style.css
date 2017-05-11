@@ -42,23 +42,50 @@ div table{
   color: whitesmoke;
   border: 1px solid white;
 }
- .info:focus{
-  background-color: #34495e;
-  color: whitesmoke;
-  border: 1px solid white;
-}
+
  .info:active
 {
   background-color: #34495e;
   color: whitesmoke;
   border: 1px solid white;
 }
+
 #controls
 {
   margin-left: auto;
   margin-right: auto;
   width: 90%;
 }
+
+#infoBox
+{
+  border-radius: 20px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  width: 80%;
+  left: -1px;
+  height: auto;
+  position: absolute;
+  vertical-align: middle;
+  background-color: #2c3e50;
+  color: white;
+  margin-left: auto;
+  margin-top: auto;
+  transition: all 0.8s;
+  padding: 10px;
+  padding-top: 0px;
+  text-justify: inter-ideograph;
+  text-align: justify;
+  border: 1px solid #ecf0f1;
+  border-left: none;
+}
+
+#infoBox p
+{
+  text-justify: inter-ideograph;
+  text-align: justify
+}
+
 
 input[type=range].slider {
   -webkit-appearance: none;

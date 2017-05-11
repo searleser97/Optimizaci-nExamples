@@ -29,14 +29,41 @@ function responsive(JQueryObject, widthPer, heightPer)
 {
     JQueryObject.width($(window).width()*(widthPer/100));
     JQueryObject.height($(window).height()*(heightPer/100));
+    $("#infoBox").css({
+        top: ($(window).height()/2)-($("#infoBox").height()/2)
+    });
 }
 $(document).ready(function(){
+    //info
+    var count = 1;
+    $("#infoBox").css({
+        top: ($(window).height()/2)-($("#infoBox").height()/2)
+    });
+    $("#infoBtn").on("click", function()
+    {
+        if(Math.pow(-1, count) > 0){
+             $("#infoBox").animate({
+                left: 0
+            }, "fast", function(){count++});
+        }else
+        {
+            $("#infoBox").animate({
+                left: ((-1) * ($("#infoBox").width()+20)).toString()
+            }, "fast", function(){count++});
+        }
+    });
+    $(document).on("click", function(){
+        if(Math.pow(-1, count) < 0){
+             $("#infoBox").animate({
+                left: ((-1) * ($("#infoBox").width()+20)).toString()
+            }, "fast", function(){count++});
+        }
+    });
+    
     //Resize
     responsive($("#mySVG"), 90, 50);
-    //responsive($("#controls"), 90, 50);
     $(window).resize(function(){
         responsive($("#mySVG"), 90, 50);
-      //  responsive($("#controls"), 90, 50);
         console.log($(window).width() + "x" + $(window).height());
     });
     //Vars
