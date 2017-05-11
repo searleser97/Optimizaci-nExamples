@@ -3,18 +3,26 @@
     src: url('../common_resources/Shine.ttf') format("truetype");
 }
 
-.info {
+.infoCircle {
     position: absolute;
     right: 5%;
-    top: -6px;
     width: 30px;
     height: 30px;
     line-height: 30px;
     text-align: center;
     background-color: black;
     border-radius: 15px;
-    font-family: "Shine", Verdana;
     z-index: 2;
+}
+.info {
+    display: inline-block;
+    padding: 0;
+    margin-top: 2px;
+    height: 15px;
+    /*background-color: red;*/
+    font-size: 18px;
+    font-family: "Shine", Verdana;
+    background-color: transparent;
 }
 
 .info:hover {
