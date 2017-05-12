@@ -1,5 +1,5 @@
 #!/usr/bin/python
-from http.server import BaseHTTPRequestHandler, HTTPServer
+from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 from os import curdir, sep
 import socket
 
@@ -45,16 +45,17 @@ class myHandler(BaseHTTPRequestHandler):
                 mimetype = 'text/css'
                 sendReply = True
             if self.path.endswith('.ttf'):
-                mimetype = 'application/x-font-ttf'
+                mimetype = 'ttf'
                 sendReply = True
 
             if sendReply is True:
                 # Open the static file requested and send it
-                with open(curdir + sep + self.path, 'rb') as f:
-                    self.send_response(200)
-                    self.send_header('Content-type', mimetype)
-                    self.end_headers()
-                    self.wfile.write(f.read())
+                f = open(curdir + sep + self.path)
+                self.send_response(200)
+                self.send_header('Content-type', mimetype)
+                self.end_headers()
+                self.wfile.write(f.read())
+                f.close()
             return
 
         except IOError:
@@ -66,13 +67,13 @@ if __name__ == '__main__':
         # Create a web server and define the handler to manage the
         # incoming request
         server = HTTPServer(('', PORT_NUMBER), myHandler)
-        print('Started httpserver on port ', PORT_NUMBER)
+        print 'Started httpserver on port ', PORT_NUMBER
         URL = 'http://%s:%s' % (get_ip_address(), PORT_NUMBER)
-        print(URL)
+        print URL
 
         # Wait forever for incoming htto requests
         server.serve_forever()
 
     except KeyboardInterrupt:
-        print(' keyboard interrupt, shutting down the web server')
+        print ' keyboard interrupt, shutting down the web server'
         server.socket.close()
