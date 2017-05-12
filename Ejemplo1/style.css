@@ -3,6 +3,25 @@
     src: url('../common_resources/Shine.ttf') format("truetype");
 }
 
+.description {
+    position: fixed;
+    float: left;
+    opacity: 1;
+    z-index: 11;
+    width: 50%;
+    min-height: 10px;
+    left: 0;
+    right: 0;
+    margin-right: auto;
+    margin-left: auto;
+    top: -50px;
+    border-radius: 0px 0px 10px 10px;
+    background-color: #102e5e;
+    padding: 10px;
+    border: 2px solid whitesmoke;
+    transition: top 1s;
+}
+
 .infoCircle {
     float: right;
     width: 30px;
@@ -26,8 +45,9 @@
     background-color: transparent;
 }
 
-.infoCircle:hover {
+.infoCircle:hover + .description {
     cursor: pointer;
+    top: 0;
 }
 
 .container {
