@@ -1,25 +1,25 @@
-@font-face {
+/*@font-face {
     font-family: "Shine";
     src: url('../common_resources/Shine.ttf') format("truetype");
-}
+}*/
 
 .description {
-    position: fixed;
+    position: absolute;
     float: left;
-    opacity: 1;
-    z-index: 11;
-    width: 50%;
-    min-height: 10px;
-    left: 0;
+    opacity: 0;
+    z-index: -1;
+    width: inherit;
+    min-height: 50px;
+    left: -50px;
     right: 0;
     margin-right: auto;
     margin-left: auto;
-    top: -50px;
-    border-radius: 0px 0px 10px 10px;
+    top: 30px;
+    border-radius: 10px 10px 10px 10px;
     background-color: #102e5e;
     padding: 10px;
     border: 2px solid whitesmoke;
-    transition: top 1s;
+    transition: opacity 1s;
 }
 
 .infoCircle {
@@ -34,6 +34,7 @@
     margin-top: 10px;
     z-index: 2;
 }
+
 .info {
     display: inline-block;
     padding: 0;
@@ -45,8 +46,11 @@
     background-color: transparent;
 }
 
-.infoCircle:hover + .description {
+.infoCircle:hover {
     cursor: pointer;
+}
+
+.infoCircle:hover > .description {
     top: 0;
 }
 

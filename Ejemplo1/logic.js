@@ -117,6 +117,21 @@ $(document).ready(function() {
         }
     });
 
+    $('#infoCircle').click(function (e) {
+        e.stopPropagation();
+        $('#description').css({
+            'opacity': '1',
+            'z-index': '11'
+        })
+    });
+
+    $(document).click(function (e) {
+        $('#description').css({
+            'opacity': '0',
+            'z-index': '-1'
+        })
+    })
+
     $(window).resize(function() { init(); });
     $('.container').css({ 'opacity': '1' });
 });
