@@ -5,16 +5,17 @@
     <title></title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="css/style.css" rel="stylesheet">
     <style>
         body {
             background-repeat: round;
-            background-image: url("fondo.png")
+            background-image: url("./common_resources/fondo.png")
         }
         svg
         {
             width: 80%;
-            
+        }
+        text{
+            cursor: pointer;
         }
     </style>
 </head>
@@ -118,9 +119,19 @@
             </g>
         </g>
     </svg></center>
+    <script type="text/javascript" src="./common_resources/jquery-3.2.1.js"></script>
+    <script>
+        $(document).ready(function()
+        {
+            for(var i = 1; i<= 10; i++)
+            {
+                $("#Ejemplo_"+i.toString()).click(function(){
+                    window.location.href = $(this).attr("id").toString() + "/index.html";
+                });
+            }
+        });
+    </script>
 </body>
-<script>
 
-</script>
 
 </html>
