@@ -84,5 +84,10 @@ $(document).ready(function(){
         onChangePer(perimetro, x);
         perimetro = $("#mySlider_per").val();
     });
-    
+    $("body").animate({
+        opacity: "1",
+    }, 1000, function(){
+        //$(this).css("transform", "rotate(180deg)");
+    });
+   
 });
